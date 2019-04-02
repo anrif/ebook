@@ -1,0 +1,29 @@
+{
+    "articleApp": {
+        "shippingAddress" : {
+            "home": {
+                "title": "ShippingAddresses",
+                "createLabel": "Créer un nouveau Shipping Address",
+                "createOrEditLabel": "Créer ou éditer un Shipping Address",
+                "search": "Recherche pour Shipping Address"
+            },
+            "created": "Un nouveau Shipping Address a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Shipping Address avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Shipping Address avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Shipping Address {{ id }} ?"
+            },
+            "detail": {
+                "title": "Shipping Address"
+            },
+            "shippingAddressName": "Shipping Address Name",
+            "shippingAddressStreet1": "Shipping Address Street 1",
+            "shippingAddressStreet2": "Shipping Address Street 2",
+            "shippingAddressCity": "Shipping Address City",
+            "shippingAddressState": "Shipping Address State",
+            "shippingAddressCountry": "Shipping Address Country",
+            "shippingAddressZipcode": "Shipping Address Zipcode",
+            "ordered": "Ordered"
+        }
+    }
+}

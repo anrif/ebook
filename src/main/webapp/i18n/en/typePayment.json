@@ -1,0 +1,10 @@
+{
+    "articleApp": {
+        "TypePayment" : {
+            "null": "",
+            "VISA": "VISA",
+            "PAYPAL": "PAYPAL",
+            "MASTERCARD": "MASTERCARD"
+        }
+    }
+}

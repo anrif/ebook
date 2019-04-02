@@ -1,0 +1,30 @@
+{
+    "articleApp": {
+        "userShipping" : {
+            "home": {
+                "title": "User Shippings",
+                "createLabel": "Create a new User Shipping",
+                "createOrEditLabel": "Create or edit a User Shipping",
+                "search": "Search for User Shipping"
+            },
+            "created": "A new User Shipping is created with identifier {{ param }}",
+            "updated": "A User Shipping is updated with identifier {{ param }}",
+            "deleted": "A User Shipping is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Shipping {{ id }}?"
+            },
+            "detail": {
+                "title": "User Shipping"
+            },
+            "userShippingName": "User Shipping Name",
+            "userShippingStreet1": "User Shipping Street 1",
+            "userShippingStreet2": "User Shipping Street 2",
+            "userShippingCity": "User Shipping City",
+            "userShippingState": "User Shipping State",
+            "userShippingCountry": "User Shipping Country",
+            "userShippingZipcode": "User Shipping Zipcode",
+            "userShippingDefault": "User Shipping Default",
+            "user": "User"
+        }
+    }
+}

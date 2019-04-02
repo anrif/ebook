@@ -1,0 +1,9 @@
+{
+    "articleApp": {
+        "BookFormat" : {
+            "null": "",
+            "PAPERBACK": "PAPERBACK",
+            "HARDCOVER": "HARDCOVER"
+        }
+    }
+}

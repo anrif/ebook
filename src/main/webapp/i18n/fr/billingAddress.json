@@ -1,0 +1,29 @@
+{
+    "articleApp": {
+        "billingAddress" : {
+            "home": {
+                "title": "BillingAddresses",
+                "createLabel": "Créer un nouveau Billing Address",
+                "createOrEditLabel": "Créer ou éditer un Billing Address",
+                "search": "Recherche pour Billing Address"
+            },
+            "created": "Un nouveau Billing Address a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Billing Address avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Billing Address avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Billing Address {{ id }} ?"
+            },
+            "detail": {
+                "title": "Billing Address"
+            },
+            "billingAddressName": "Billing Address Name",
+            "billingAddressStreet1": "Billing Address Street 1",
+            "billingAddressStreet2": "Billing Address Street 2",
+            "billingAddressCity": "Billing Address City",
+            "billingAddressState": "Billing Address State",
+            "billingAddressCountry": "Billing Address Country",
+            "billingAddressZipcode": "Billing Address Zipcode",
+            "ordered": "Ordered"
+        }
+    }
+}

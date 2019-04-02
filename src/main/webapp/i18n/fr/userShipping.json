@@ -1,0 +1,30 @@
+{
+    "articleApp": {
+        "userShipping" : {
+            "home": {
+                "title": "UserShippings",
+                "createLabel": "Créer un nouveau User Shipping",
+                "createOrEditLabel": "Créer ou éditer un User Shipping",
+                "search": "Recherche pour User Shipping"
+            },
+            "created": "Un nouveau User Shipping a été créé avec l'identifiant {{ param }}",
+            "updated": "Le User Shipping avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le User Shipping avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le User Shipping {{ id }} ?"
+            },
+            "detail": {
+                "title": "User Shipping"
+            },
+            "userShippingName": "User Shipping Name",
+            "userShippingStreet1": "User Shipping Street 1",
+            "userShippingStreet2": "User Shipping Street 2",
+            "userShippingCity": "User Shipping City",
+            "userShippingState": "User Shipping State",
+            "userShippingCountry": "User Shipping Country",
+            "userShippingZipcode": "User Shipping Zipcode",
+            "userShippingDefault": "User Shipping Default",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "articleApp": {
+        "BookCategory" : {
+            "null": "",
+            "MANAGEMENT": "MANAGEMENT",
+            "FICTION": "FICTION",
+            "ENGINEERING": "ENGINEERING",
+            "PROGRAMMING": "PROGRAMMING",
+            "ARTS_LITERATURE": "ARTS_LITERATURE"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "articleApp": {
+        "userPayment" : {
+            "home": {
+                "title": "User Payments",
+                "createLabel": "Create a new User Payment",
+                "createOrEditLabel": "Create or edit a User Payment",
+                "search": "Search for User Payment"
+            },
+            "created": "A new User Payment is created with identifier {{ param }}",
+            "updated": "A User Payment is updated with identifier {{ param }}",
+            "deleted": "A User Payment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Payment {{ id }}?"
+            },
+            "detail": {
+                "title": "User Payment"
+            },
+            "type": "Type",
+            "cardName": "Card Name",
+            "cardNumber": "Card Number",
+            "expiryMonth": "Expiry Month",
+            "expiryYear": "Expiry Year",
+            "cvc": "Cvc",
+            "holderName": "Holder Name",
+            "defaultPayment": "Default Payment",
+            "user": "User"
+        }
+    }
+}

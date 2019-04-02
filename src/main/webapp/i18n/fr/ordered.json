@@ -1,0 +1,29 @@
+{
+    "articleApp": {
+        "ordered" : {
+            "home": {
+                "title": "Ordereds",
+                "createLabel": "Créer un nouveau Ordered",
+                "createOrEditLabel": "Créer ou éditer un Ordered",
+                "search": "Recherche pour Ordered"
+            },
+            "created": "Un nouveau Ordered a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ordered avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ordered avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ordered {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ordered"
+            },
+            "orderDate": "Order Date",
+            "shippingDate": "Shipping Date",
+            "shippingMethod": "Shipping Method",
+            "orderStatus": "Order Status",
+            "orderTotal": "Order Total",
+            "shippingAddresss": "Shipping Addresss",
+            "billingAddresss": "Billing Addresss",
+            "payment": "Payment"
+        }
+    }
+}

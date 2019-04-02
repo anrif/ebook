@@ -1,0 +1,29 @@
+{
+    "articleApp": {
+        "userBilling" : {
+            "home": {
+                "title": "User Billings",
+                "createLabel": "Create a new User Billing",
+                "createOrEditLabel": "Create or edit a User Billing",
+                "search": "Search for User Billing"
+            },
+            "created": "A new User Billing is created with identifier {{ param }}",
+            "updated": "A User Billing is updated with identifier {{ param }}",
+            "deleted": "A User Billing is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Billing {{ id }}?"
+            },
+            "detail": {
+                "title": "User Billing"
+            },
+            "userBillingName": "User Billing Name",
+            "userBillingStreet1": "User Billing Street 1",
+            "userBillingStreet2": "User Billing Street 2",
+            "userBillingCity": "User Billing City",
+            "userBillingState": "User Billing State",
+            "userBillingCountry": "User Billing Country",
+            "userBillingZipcode": "User Billing Zipcode",
+            "user": "User"
+        }
+    }
+}
