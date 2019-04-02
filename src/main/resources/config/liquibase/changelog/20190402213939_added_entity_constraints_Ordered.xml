@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ordered.
+    -->
+    <changeSet id="20190402213939-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ordereds_id"
+                                 baseTableName="ordered_shipping_addresss"
+                                 constraintName="fk_ordered_shipping_addresss_ordereds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordered"/>
+        <addForeignKeyConstraint baseColumnNames="shipping_addressses_id"
+                                 baseTableName="ordered_shipping_addresss"
+                                 constraintName="fk_ordered_shipping_addresss_shipping_addressses_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shipping_address"/>
+        
+        <addForeignKeyConstraint baseColumnNames="ordereds_id"
+                                 baseTableName="ordered_billing_addresss"
+                                 constraintName="fk_ordered_billing_addresss_ordereds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordered"/>
+        <addForeignKeyConstraint baseColumnNames="billing_addressses_id"
+                                 baseTableName="ordered_billing_addresss"
+                                 constraintName="fk_ordered_billing_addresss_billing_addressses_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="billing_address"/>
+        
+        <addForeignKeyConstraint baseColumnNames="ordereds_id"
+                                 baseTableName="ordered_payment"
+                                 constraintName="fk_ordered_payment_ordereds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordered"/>
+        <addForeignKeyConstraint baseColumnNames="payments_id"
+                                 baseTableName="ordered_payment"
+                                 constraintName="fk_ordered_payment_payments_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment"/>
+        
+    </changeSet>
+</databaseChangeLog>
