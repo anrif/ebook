@@ -1,0 +1,143 @@
+
+
+entity BillingAddress {
+	billingAddressName String required, 
+	billingAddressStreet1 String,
+	billingAddressStreet2 String,
+	billingAddressCity String required, 
+	billingAddressState String required, 
+	billingAddressCountry String required,
+	billingAddressZipcode String 
+}
+
+entity Book {
+ 	title String required,
+	author String required,
+	publisher String,
+	publicationDate String,
+	language Language,
+	category BookCategory,
+	numberOfPages Integer,
+	format BookFormat,
+	isbn Integer required,
+	shippingWeight Double required,
+	lastPrice Double required,
+	ourPrice Double required,
+	active Boolean required,
+    description TextBlob required,
+    inStockNumber Integer required,
+    bookImage ImageBlob
+}
+
+enum BookFormat {
+	PAPERBACK, HARDCOVER
+}
+
+enum BookCategory {
+	MANAGEMENT, FICTION, ENGINEERING, PROGRAMMING, ARTS_LITERATURE
+}
+
+enum Language {
+	FRENCH, ENGLISH
+}
+entity CartItem {
+	qty Integer,
+	subtotal BigDecimal
+}
+
+entity Ordered {
+	orderDate LocalDate required,
+	shippingDate LocalDate required,
+	shippingMethod String required,
+	orderStatus String required,
+	orderTotal BigDecimal required
+}
+
+enum OrderStatus {
+	PENDING, ACCEPTED
+}
+
+entity Payment {
+	type String required,
+	cartName String required,
+	cardNumber String required,
+	expiryMonth Integer required,
+	expiryYear Integer required,
+	cvc Integer required,
+	holderName String required
+}
+
+entity ShippingAddress {
+	shippingAddressName String required,
+	shippingAddressStreet1 String,
+	shippingAddressStreet2 String,
+	shippingAddressCity String required,
+	shippingAddressState String required,
+	shippingAddressCountry String required,
+	shippingAddressZipcode String
+}
+
+entity ShoppingCart {
+	grandTotal BigDecimal required
+}
+
+entity UserBilling {
+	userBillingName String required,
+	userBillingStreet1 String,
+	userBillingStreet2 String,
+	userBillingCity String required,
+	userBillingState String required,
+	userBillingCountry String required,
+	userBillingZipcode String
+}
+
+entity UserPayment {
+	type TypePayment required,
+	cardName String required,
+	cardNumber String required,
+	expiryMonth Integer required,
+	expiryYear Integer required,
+	cvc Integer required,
+	holderName String required,
+	defaultPayment Boolean
+}
+
+enum TypePayment {
+	VISA, PAYPAL, MASTERCARD
+} 
+
+entity UserShipping {
+ 	userShippingName String required,
+	userShippingStreet1 String,
+	userShippingStreet2 String,
+	userShippingCity String required,
+	userShippingState String required,
+	userShippingCountry String required,
+	userShippingZipcode String required,
+	userShippingDefault Boolean
+}
+
+relationship ManyToOne {
+    UserPayment{user(login)} to User,
+    UserShipping{user(login)} to User,
+    UserBilling{user(login)} to User,
+    ShoppingCart{user(login)} to User,
+    CartItem{book(isbn)} to Book,
+    CartItem{shoppingCart} to ShoppingCart,
+    CartItem{ordered} to Ordered
+    
+}
+
+relationship ManyToMany {
+	Ordered{shippingAddresss} to ShippingAddress{ordered},
+    Ordered{billingAddresss} to BillingAddress{ordered},
+    Ordered{payment} to Payment{ordered}
+}
+
+service all with serviceClass
+service all with serviceImpl
+
+paginate * with pagination
+filter all
+
+
