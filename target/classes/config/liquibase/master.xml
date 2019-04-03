@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213936_added_entity_BillingAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213937_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213938_added_entity_CartItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213939_added_entity_Ordered.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213940_added_entity_Payment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213941_added_entity_ShippingAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213942_added_entity_ShoppingCart.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213943_added_entity_UserBilling.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213944_added_entity_UserPayment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213945_added_entity_UserShipping.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190402213938_added_entity_constraints_CartItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213939_added_entity_constraints_Ordered.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213942_added_entity_constraints_ShoppingCart.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213943_added_entity_constraints_UserBilling.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213944_added_entity_constraints_UserPayment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402213945_added_entity_constraints_UserShipping.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

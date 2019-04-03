@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Ordered.
+    -->
+    <changeSet id="20190402213939-1" author="jhipster">
+        <createTable tableName="ordered">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_date" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="shipping_date" type="date">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="shipping_method" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="order_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="order_total" type="decimal(10,2)">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+        <createTable tableName="ordered_shipping_addresss">
+            <column name="shipping_addressses_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ordereds_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="ordereds_id, shipping_addressses_id" tableName="ordered_shipping_addresss"/>
+        
+        <createTable tableName="ordered_billing_addresss">
+            <column name="billing_addressses_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ordereds_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="ordereds_id, billing_addressses_id" tableName="ordered_billing_addresss"/>
+        
+        <createTable tableName="ordered_payment">
+            <column name="payments_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ordereds_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="ordereds_id, payments_id" tableName="ordered_payment"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CartItem.
+    -->
+    <changeSet id="20190402213938-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="book_id"
+                                 baseTableName="cart_item"
+                                 constraintName="fk_cart_item_book_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="book"/>
+
+        <addForeignKeyConstraint baseColumnNames="shopping_cart_id"
+                                 baseTableName="cart_item"
+                                 constraintName="fk_cart_item_shopping_cart_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shopping_cart"/>
+
+        <addForeignKeyConstraint baseColumnNames="ordered_id"
+                                 baseTableName="cart_item"
+                                 constraintName="fk_cart_item_ordered_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ordered"/>
+
+    </changeSet>
+</databaseChangeLog>
