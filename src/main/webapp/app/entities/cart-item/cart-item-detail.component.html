@@ -1,0 +1,48 @@
+
+<div *ngIf="cartItem">
+    <h2><span jhiTranslate="articleApp.cartItem.detail.title">Cart Item</span> {{cartItem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.cartItem.qty">Qty</span></dt>
+        <dd>
+            <span>{{cartItem.qty}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.cartItem.subtotal">Subtotal</span></dt>
+        <dd>
+            <span>{{cartItem.subtotal}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.cartItem.book">Book</span></dt>
+        <dd>
+            <div *ngIf="cartItem.book">
+                <a [routerLink]="['/book', cartItem.book?.id]">{{cartItem.book?.isbn}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="articleApp.cartItem.shoppingCart">Shopping Cart</span></dt>
+        <dd>
+            <div *ngIf="cartItem.shoppingCart">
+                <a [routerLink]="['/shopping-cart', cartItem.shoppingCart?.id]">{{cartItem.shoppingCart?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="articleApp.cartItem.ordered">Ordered</span></dt>
+        <dd>
+            <div *ngIf="cartItem.ordered">
+                <a [routerLink]="['/ordered', cartItem.ordered?.id]">{{cartItem.ordered?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cart-item/'+ cartItem.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,50 @@
+
+<div *ngIf="shippingAddress">
+    <h2><span jhiTranslate="articleApp.shippingAddress.detail.title">Shipping Address</span> {{shippingAddress.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressName">Shipping Address Name</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressStreet1">Shipping Address Street 1</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressStreet1}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressStreet2">Shipping Address Street 2</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressStreet2}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressCity">Shipping Address City</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressCity}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressState">Shipping Address State</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressState}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressCountry">Shipping Address Country</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressCountry}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.shippingAddress.shippingAddressZipcode">Shipping Address Zipcode</span></dt>
+        <dd>
+            <span>{{shippingAddress.shippingAddressZipcode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'shipping-address/'+ shippingAddress.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

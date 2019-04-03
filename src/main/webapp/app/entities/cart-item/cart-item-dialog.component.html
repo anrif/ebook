@@ -1,0 +1,56 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCartItemLabel" jhiTranslate="articleApp.cartItem.home.createOrEditLabel">Create or edit a Cart Item</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cartItem.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cartItem.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.cartItem.qty" for="field_qty">Qty</label>
+            <input type="number" class="form-control" name="qty" id="field_qty"
+                [(ngModel)]="cartItem.qty" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.cartItem.subtotal" for="field_subtotal">Subtotal</label>
+            <input type="number" class="form-control" name="subtotal" id="field_subtotal"
+                [(ngModel)]="cartItem.subtotal" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.cartItem.book" for="field_book">Book</label>
+            <select class="form-control" id="field_book" name="book" [(ngModel)]="cartItem.book" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bookOption.id === cartItem.book?.id ? cartItem.book : bookOption" *ngFor="let bookOption of books; trackBy: trackBookById">{{bookOption.isbn}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.cartItem.shoppingCart" for="field_shoppingCart">Shopping Cart</label>
+            <select class="form-control" id="field_shoppingCart" name="shoppingCart" [(ngModel)]="cartItem.shoppingCart" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="shoppingCartOption.id === cartItem.shoppingCart?.id ? cartItem.shoppingCart : shoppingCartOption" *ngFor="let shoppingCartOption of shoppingcarts; trackBy: trackShoppingCartById">{{shoppingCartOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.cartItem.ordered" for="field_ordered">Ordered</label>
+            <select class="form-control" id="field_ordered" name="ordered" [(ngModel)]="cartItem.ordered" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderedOption.id === cartItem.ordered?.id ? cartItem.ordered : orderedOption" *ngFor="let orderedOption of ordereds; trackBy: trackOrderedById">{{orderedOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

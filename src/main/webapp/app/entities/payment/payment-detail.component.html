@@ -1,0 +1,50 @@
+
+<div *ngIf="payment">
+    <h2><span jhiTranslate="articleApp.payment.detail.title">Payment</span> {{payment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.payment.type">Type</span></dt>
+        <dd>
+            <span>{{payment.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.cartName">Cart Name</span></dt>
+        <dd>
+            <span>{{payment.cartName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.cardNumber">Card Number</span></dt>
+        <dd>
+            <span>{{payment.cardNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.expiryMonth">Expiry Month</span></dt>
+        <dd>
+            <span>{{payment.expiryMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.expiryYear">Expiry Year</span></dt>
+        <dd>
+            <span>{{payment.expiryYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.cvc">Cvc</span></dt>
+        <dd>
+            <span>{{payment.cvc}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.payment.holderName">Holder Name</span></dt>
+        <dd>
+            <span>{{payment.holderName}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'payment/'+ payment.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

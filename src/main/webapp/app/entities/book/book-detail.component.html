@@ -1,0 +1,91 @@
+
+<div *ngIf="book">
+    <h2><span jhiTranslate="articleApp.book.detail.title">Book</span> {{book.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.book.title">Title</span></dt>
+        <dd>
+            <span>{{book.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.author">Author</span></dt>
+        <dd>
+            <span>{{book.author}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.publisher">Publisher</span></dt>
+        <dd>
+            <span>{{book.publisher}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.publicationDate">Publication Date</span></dt>
+        <dd>
+            <span>{{book.publicationDate}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.language">Language</span></dt>
+        <dd>
+            <span jhiTranslate="{{'articleApp.Language.' + book.language}}">{{book.language}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.category">Category</span></dt>
+        <dd>
+            <span jhiTranslate="{{'articleApp.BookCategory.' + book.category}}">{{book.category}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.numberOfPages">Number Of Pages</span></dt>
+        <dd>
+            <span>{{book.numberOfPages}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.format">Format</span></dt>
+        <dd>
+            <span jhiTranslate="{{'articleApp.BookFormat.' + book.format}}">{{book.format}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.isbn">Isbn</span></dt>
+        <dd>
+            <span>{{book.isbn}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.shippingWeight">Shipping Weight</span></dt>
+        <dd>
+            <span>{{book.shippingWeight}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.lastPrice">Last Price</span></dt>
+        <dd>
+            <span>{{book.lastPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.ourPrice">Our Price</span></dt>
+        <dd>
+            <span>{{book.ourPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.active">Active</span></dt>
+        <dd>
+            <span>{{book.active}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.description">Description</span></dt>
+        <dd>
+            <span>{{book.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.inStockNumber">In Stock Number</span></dt>
+        <dd>
+            <span>{{book.inStockNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.book.bookImage">Book Image</span></dt>
+        <dd>
+            <div *ngIf="book.bookImage">
+                <a (click)="openFile(book.bookImageContentType, book.bookImage)">
+                    <img [src]="'data:' + book.bookImageContentType + ';base64,' + book.bookImage" style="max-width: 100%;" alt="book image"/>
+                </a>
+                {{book.bookImageContentType}}, {{byteSize(book.bookImage)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'book/'+ book.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

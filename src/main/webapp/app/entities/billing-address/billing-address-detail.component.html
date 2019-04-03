@@ -1,0 +1,50 @@
+
+<div *ngIf="billingAddress">
+    <h2><span jhiTranslate="articleApp.billingAddress.detail.title">Billing Address</span> {{billingAddress.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressName">Billing Address Name</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressStreet1">Billing Address Street 1</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressStreet1}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressStreet2">Billing Address Street 2</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressStreet2}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressCity">Billing Address City</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressCity}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressState">Billing Address State</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressState}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressCountry">Billing Address Country</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressCountry}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.billingAddress.billingAddressZipcode">Billing Address Zipcode</span></dt>
+        <dd>
+            <span>{{billingAddress.billingAddressZipcode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'billing-address/'+ billingAddress.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

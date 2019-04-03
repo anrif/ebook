@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBillingAddressLabel" jhiTranslate="articleApp.billingAddress.home.createOrEditLabel">Create or edit a Billing Address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!billingAddress.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="billingAddress.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressName" for="field_billingAddressName">Billing Address Name</label>
+            <input type="text" class="form-control" name="billingAddressName" id="field_billingAddressName"
+                [(ngModel)]="billingAddress.billingAddressName" required/>
+            <div [hidden]="!(editForm.controls.billingAddressName?.dirty && editForm.controls.billingAddressName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.billingAddressName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressStreet1" for="field_billingAddressStreet1">Billing Address Street 1</label>
+            <input type="text" class="form-control" name="billingAddressStreet1" id="field_billingAddressStreet1"
+                [(ngModel)]="billingAddress.billingAddressStreet1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressStreet2" for="field_billingAddressStreet2">Billing Address Street 2</label>
+            <input type="text" class="form-control" name="billingAddressStreet2" id="field_billingAddressStreet2"
+                [(ngModel)]="billingAddress.billingAddressStreet2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressCity" for="field_billingAddressCity">Billing Address City</label>
+            <input type="text" class="form-control" name="billingAddressCity" id="field_billingAddressCity"
+                [(ngModel)]="billingAddress.billingAddressCity" required/>
+            <div [hidden]="!(editForm.controls.billingAddressCity?.dirty && editForm.controls.billingAddressCity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.billingAddressCity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressState" for="field_billingAddressState">Billing Address State</label>
+            <input type="text" class="form-control" name="billingAddressState" id="field_billingAddressState"
+                [(ngModel)]="billingAddress.billingAddressState" required/>
+            <div [hidden]="!(editForm.controls.billingAddressState?.dirty && editForm.controls.billingAddressState?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.billingAddressState?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressCountry" for="field_billingAddressCountry">Billing Address Country</label>
+            <input type="text" class="form-control" name="billingAddressCountry" id="field_billingAddressCountry"
+                [(ngModel)]="billingAddress.billingAddressCountry" required/>
+            <div [hidden]="!(editForm.controls.billingAddressCountry?.dirty && editForm.controls.billingAddressCountry?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.billingAddressCountry?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.billingAddress.billingAddressZipcode" for="field_billingAddressZipcode">Billing Address Zipcode</label>
+            <input type="text" class="form-control" name="billingAddressZipcode" id="field_billingAddressZipcode"
+                [(ngModel)]="billingAddress.billingAddressZipcode" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

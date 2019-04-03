@@ -1,0 +1,60 @@
+
+<div *ngIf="ordered">
+    <h2><span jhiTranslate="articleApp.ordered.detail.title">Ordered</span> {{ordered.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.ordered.orderDate">Order Date</span></dt>
+        <dd>
+            <span>{{ordered.orderDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.shippingDate">Shipping Date</span></dt>
+        <dd>
+            <span>{{ordered.shippingDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.shippingMethod">Shipping Method</span></dt>
+        <dd>
+            <span>{{ordered.shippingMethod}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.orderStatus">Order Status</span></dt>
+        <dd>
+            <span>{{ordered.orderStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.orderTotal">Order Total</span></dt>
+        <dd>
+            <span>{{ordered.orderTotal}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.shippingAddresss">Shipping Addresss</span></dt>
+        <dd>
+            <span *ngFor="let shippingAddresss of ordered.shippingAddressses; let last = last">
+                <a [routerLink]="['/shipping-address', shippingAddresss?.id ]">{{shippingAddresss.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.billingAddresss">Billing Addresss</span></dt>
+        <dd>
+            <span *ngFor="let billingAddresss of ordered.billingAddressses; let last = last">
+                <a [routerLink]="['/billing-address', billingAddresss?.id ]">{{billingAddresss.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.ordered.payment">Payment</span></dt>
+        <dd>
+            <span *ngFor="let payment of ordered.payments; let last = last">
+                <a [routerLink]="['/payment', payment?.id ]">{{payment.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ordered/'+ ordered.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

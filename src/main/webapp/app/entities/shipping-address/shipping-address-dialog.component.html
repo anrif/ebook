@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myShippingAddressLabel" jhiTranslate="articleApp.shippingAddress.home.createOrEditLabel">Create or edit a Shipping Address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!shippingAddress.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="shippingAddress.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressName" for="field_shippingAddressName">Shipping Address Name</label>
+            <input type="text" class="form-control" name="shippingAddressName" id="field_shippingAddressName"
+                [(ngModel)]="shippingAddress.shippingAddressName" required/>
+            <div [hidden]="!(editForm.controls.shippingAddressName?.dirty && editForm.controls.shippingAddressName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingAddressName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressStreet1" for="field_shippingAddressStreet1">Shipping Address Street 1</label>
+            <input type="text" class="form-control" name="shippingAddressStreet1" id="field_shippingAddressStreet1"
+                [(ngModel)]="shippingAddress.shippingAddressStreet1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressStreet2" for="field_shippingAddressStreet2">Shipping Address Street 2</label>
+            <input type="text" class="form-control" name="shippingAddressStreet2" id="field_shippingAddressStreet2"
+                [(ngModel)]="shippingAddress.shippingAddressStreet2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressCity" for="field_shippingAddressCity">Shipping Address City</label>
+            <input type="text" class="form-control" name="shippingAddressCity" id="field_shippingAddressCity"
+                [(ngModel)]="shippingAddress.shippingAddressCity" required/>
+            <div [hidden]="!(editForm.controls.shippingAddressCity?.dirty && editForm.controls.shippingAddressCity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingAddressCity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressState" for="field_shippingAddressState">Shipping Address State</label>
+            <input type="text" class="form-control" name="shippingAddressState" id="field_shippingAddressState"
+                [(ngModel)]="shippingAddress.shippingAddressState" required/>
+            <div [hidden]="!(editForm.controls.shippingAddressState?.dirty && editForm.controls.shippingAddressState?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingAddressState?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressCountry" for="field_shippingAddressCountry">Shipping Address Country</label>
+            <input type="text" class="form-control" name="shippingAddressCountry" id="field_shippingAddressCountry"
+                [(ngModel)]="shippingAddress.shippingAddressCountry" required/>
+            <div [hidden]="!(editForm.controls.shippingAddressCountry?.dirty && editForm.controls.shippingAddressCountry?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingAddressCountry?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.shippingAddress.shippingAddressZipcode" for="field_shippingAddressZipcode">Shipping Address Zipcode</label>
+            <input type="text" class="form-control" name="shippingAddressZipcode" id="field_shippingAddressZipcode"
+                [(ngModel)]="shippingAddress.shippingAddressZipcode" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

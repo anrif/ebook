@@ -1,0 +1,112 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOrderedLabel" jhiTranslate="articleApp.ordered.home.createOrEditLabel">Create or edit a Ordered</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ordered.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ordered.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.ordered.orderDate" for="field_orderDate">Order Date</label>
+            <div class="input-group">
+                <input id="field_orderDate" type="text" class="form-control" name="orderDate" ngbDatepicker  #orderDateDp="ngbDatepicker" [(ngModel)]="ordered.orderDate"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="orderDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.orderDate?.dirty && editForm.controls.orderDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.orderDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.ordered.shippingDate" for="field_shippingDate">Shipping Date</label>
+            <div class="input-group">
+                <input id="field_shippingDate" type="text" class="form-control" name="shippingDate" ngbDatepicker  #shippingDateDp="ngbDatepicker" [(ngModel)]="ordered.shippingDate"
+                required/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="shippingDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.shippingDate?.dirty && editForm.controls.shippingDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.ordered.shippingMethod" for="field_shippingMethod">Shipping Method</label>
+            <input type="text" class="form-control" name="shippingMethod" id="field_shippingMethod"
+                [(ngModel)]="ordered.shippingMethod" required/>
+            <div [hidden]="!(editForm.controls.shippingMethod?.dirty && editForm.controls.shippingMethod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.shippingMethod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.ordered.orderStatus" for="field_orderStatus">Order Status</label>
+            <input type="text" class="form-control" name="orderStatus" id="field_orderStatus"
+                [(ngModel)]="ordered.orderStatus" required/>
+            <div [hidden]="!(editForm.controls.orderStatus?.dirty && editForm.controls.orderStatus?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.orderStatus?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.ordered.orderTotal" for="field_orderTotal">Order Total</label>
+            <input type="number" class="form-control" name="orderTotal" id="field_orderTotal"
+                [(ngModel)]="ordered.orderTotal" required/>
+            <div [hidden]="!(editForm.controls.orderTotal?.dirty && editForm.controls.orderTotal?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.orderTotal?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.orderTotal?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="articleApp.ordered.shippingAddresss" for="field_shippingAddresss">Shipping Addresss</label>
+            <select class="form-control" id="field_shippingAddresss" multiple name="shippingAddresss" [(ngModel)]="ordered.shippingAddressses">
+                <option [ngValue]="getSelected(ordered.shippingAddressses, shippingAddressOption)" *ngFor="let shippingAddressOption of shippingaddresses; trackBy: trackShippingAddressById">{{shippingAddressOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="articleApp.ordered.billingAddresss" for="field_billingAddresss">Billing Addresss</label>
+            <select class="form-control" id="field_billingAddresss" multiple name="billingAddresss" [(ngModel)]="ordered.billingAddressses">
+                <option [ngValue]="getSelected(ordered.billingAddressses, billingAddressOption)" *ngFor="let billingAddressOption of billingaddresses; trackBy: trackBillingAddressById">{{billingAddressOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="articleApp.ordered.payment" for="field_payment">Payment</label>
+            <select class="form-control" id="field_payment" multiple name="payment" [(ngModel)]="ordered.payments">
+                <option [ngValue]="getSelected(ordered.payments, paymentOption)" *ngFor="let paymentOption of payments; trackBy: trackPaymentById">{{paymentOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

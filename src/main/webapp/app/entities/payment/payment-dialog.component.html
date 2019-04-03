@@ -1,0 +1,114 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPaymentLabel" jhiTranslate="articleApp.payment.home.createOrEditLabel">Create or edit a Payment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!payment.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="payment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="payment.type" required/>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.cartName" for="field_cartName">Cart Name</label>
+            <input type="text" class="form-control" name="cartName" id="field_cartName"
+                [(ngModel)]="payment.cartName" required/>
+            <div [hidden]="!(editForm.controls.cartName?.dirty && editForm.controls.cartName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cartName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.cardNumber" for="field_cardNumber">Card Number</label>
+            <input type="text" class="form-control" name="cardNumber" id="field_cardNumber"
+                [(ngModel)]="payment.cardNumber" required/>
+            <div [hidden]="!(editForm.controls.cardNumber?.dirty && editForm.controls.cardNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cardNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.expiryMonth" for="field_expiryMonth">Expiry Month</label>
+            <input type="number" class="form-control" name="expiryMonth" id="field_expiryMonth"
+                [(ngModel)]="payment.expiryMonth" required/>
+            <div [hidden]="!(editForm.controls.expiryMonth?.dirty && editForm.controls.expiryMonth?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.expiryMonth?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.expiryMonth?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.expiryYear" for="field_expiryYear">Expiry Year</label>
+            <input type="number" class="form-control" name="expiryYear" id="field_expiryYear"
+                [(ngModel)]="payment.expiryYear" required/>
+            <div [hidden]="!(editForm.controls.expiryYear?.dirty && editForm.controls.expiryYear?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.expiryYear?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.expiryYear?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.cvc" for="field_cvc">Cvc</label>
+            <input type="number" class="form-control" name="cvc" id="field_cvc"
+                [(ngModel)]="payment.cvc" required/>
+            <div [hidden]="!(editForm.controls.cvc?.dirty && editForm.controls.cvc?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.cvc?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.cvc?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.payment.holderName" for="field_holderName">Holder Name</label>
+            <input type="text" class="form-control" name="holderName" id="field_holderName"
+                [(ngModel)]="payment.holderName" required/>
+            <div [hidden]="!(editForm.controls.holderName?.dirty && editForm.controls.holderName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.holderName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

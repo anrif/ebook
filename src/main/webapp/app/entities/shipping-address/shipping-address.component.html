@@ -1,0 +1,91 @@
+<div>
+    <h2>
+        <span jhiTranslate="articleApp.shippingAddress.home.title">Shipping Addresses</span>
+        <button class="btn btn-primary float-right jh-create-entity create-shipping-address" [routerLink]="['/', { outlets: { popup: ['shipping-address-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="articleApp.shippingAddress.home.createLabel">
+            Create new Shipping Address
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'articleApp.shippingAddress.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="shippingAddresses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressName"><span jhiTranslate="articleApp.shippingAddress.shippingAddressName">Shipping Address Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressStreet1"><span jhiTranslate="articleApp.shippingAddress.shippingAddressStreet1">Shipping Address Street 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressStreet2"><span jhiTranslate="articleApp.shippingAddress.shippingAddressStreet2">Shipping Address Street 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressCity"><span jhiTranslate="articleApp.shippingAddress.shippingAddressCity">Shipping Address City</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressState"><span jhiTranslate="articleApp.shippingAddress.shippingAddressState">Shipping Address State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressCountry"><span jhiTranslate="articleApp.shippingAddress.shippingAddressCountry">Shipping Address Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressZipcode"><span jhiTranslate="articleApp.shippingAddress.shippingAddressZipcode">Shipping Address Zipcode</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let shippingAddress of shippingAddresses ;trackBy: trackId">
+                <td><a [routerLink]="['../shipping-address', shippingAddress.id ]">{{shippingAddress.id}}</a></td>
+                <td>{{shippingAddress.shippingAddressName}}</td>
+                <td>{{shippingAddress.shippingAddressStreet1}}</td>
+                <td>{{shippingAddress.shippingAddressStreet2}}</td>
+                <td>{{shippingAddress.shippingAddressCity}}</td>
+                <td>{{shippingAddress.shippingAddressState}}</td>
+                <td>{{shippingAddress.shippingAddressCountry}}</td>
+                <td>{{shippingAddress.shippingAddressZipcode}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../shipping-address', shippingAddress.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'shipping-address/'+ shippingAddress.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'shipping-address/'+ shippingAddress.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="shippingAddresses && shippingAddresses.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
