@@ -1,0 +1,102 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserShippingLabel" jhiTranslate="articleApp.userShipping.home.createOrEditLabel">Create or edit a User Shipping</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userShipping.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userShipping.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingName" for="field_userShippingName">User Shipping Name</label>
+            <input type="text" class="form-control" name="userShippingName" id="field_userShippingName"
+                [(ngModel)]="userShipping.userShippingName" required/>
+            <div [hidden]="!(editForm.controls.userShippingName?.dirty && editForm.controls.userShippingName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userShippingName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingStreet1" for="field_userShippingStreet1">User Shipping Street 1</label>
+            <input type="text" class="form-control" name="userShippingStreet1" id="field_userShippingStreet1"
+                [(ngModel)]="userShipping.userShippingStreet1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingStreet2" for="field_userShippingStreet2">User Shipping Street 2</label>
+            <input type="text" class="form-control" name="userShippingStreet2" id="field_userShippingStreet2"
+                [(ngModel)]="userShipping.userShippingStreet2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingCity" for="field_userShippingCity">User Shipping City</label>
+            <input type="text" class="form-control" name="userShippingCity" id="field_userShippingCity"
+                [(ngModel)]="userShipping.userShippingCity" required/>
+            <div [hidden]="!(editForm.controls.userShippingCity?.dirty && editForm.controls.userShippingCity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userShippingCity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingState" for="field_userShippingState">User Shipping State</label>
+            <input type="text" class="form-control" name="userShippingState" id="field_userShippingState"
+                [(ngModel)]="userShipping.userShippingState" required/>
+            <div [hidden]="!(editForm.controls.userShippingState?.dirty && editForm.controls.userShippingState?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userShippingState?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingCountry" for="field_userShippingCountry">User Shipping Country</label>
+            <input type="text" class="form-control" name="userShippingCountry" id="field_userShippingCountry"
+                [(ngModel)]="userShipping.userShippingCountry" required/>
+            <div [hidden]="!(editForm.controls.userShippingCountry?.dirty && editForm.controls.userShippingCountry?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userShippingCountry?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingZipcode" for="field_userShippingZipcode">User Shipping Zipcode</label>
+            <input type="text" class="form-control" name="userShippingZipcode" id="field_userShippingZipcode"
+                [(ngModel)]="userShipping.userShippingZipcode" required/>
+            <div [hidden]="!(editForm.controls.userShippingZipcode?.dirty && editForm.controls.userShippingZipcode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userShippingZipcode?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.userShippingDefault" for="field_userShippingDefault">User Shipping Default</label>
+            <input type="checkbox" class="form-control" name="userShippingDefault" id="field_userShippingDefault"
+                [(ngModel)]="userShipping.userShippingDefault" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userShipping.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="userShipping.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === userShipping.user?.id ? userShipping.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+
+<div *ngIf="userBilling">
+    <h2><span jhiTranslate="articleApp.userBilling.detail.title">User Billing</span> {{userBilling.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingName">User Billing Name</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingStreet1">User Billing Street 1</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingStreet1}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingStreet2">User Billing Street 2</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingStreet2}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingCity">User Billing City</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingCity}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingState">User Billing State</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingState}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingCountry">User Billing Country</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingCountry}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.userBillingZipcode">User Billing Zipcode</span></dt>
+        <dd>
+            <span>{{userBilling.userBillingZipcode}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userBilling.user">User</span></dt>
+        <dd>
+            {{userBilling.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-billing/'+ userBilling.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

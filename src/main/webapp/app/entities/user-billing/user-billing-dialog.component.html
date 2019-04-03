@@ -1,0 +1,91 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserBillingLabel" jhiTranslate="articleApp.userBilling.home.createOrEditLabel">Create or edit a User Billing</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userBilling.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userBilling.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingName" for="field_userBillingName">User Billing Name</label>
+            <input type="text" class="form-control" name="userBillingName" id="field_userBillingName"
+                [(ngModel)]="userBilling.userBillingName" required/>
+            <div [hidden]="!(editForm.controls.userBillingName?.dirty && editForm.controls.userBillingName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userBillingName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingStreet1" for="field_userBillingStreet1">User Billing Street 1</label>
+            <input type="text" class="form-control" name="userBillingStreet1" id="field_userBillingStreet1"
+                [(ngModel)]="userBilling.userBillingStreet1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingStreet2" for="field_userBillingStreet2">User Billing Street 2</label>
+            <input type="text" class="form-control" name="userBillingStreet2" id="field_userBillingStreet2"
+                [(ngModel)]="userBilling.userBillingStreet2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingCity" for="field_userBillingCity">User Billing City</label>
+            <input type="text" class="form-control" name="userBillingCity" id="field_userBillingCity"
+                [(ngModel)]="userBilling.userBillingCity" required/>
+            <div [hidden]="!(editForm.controls.userBillingCity?.dirty && editForm.controls.userBillingCity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userBillingCity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingState" for="field_userBillingState">User Billing State</label>
+            <input type="text" class="form-control" name="userBillingState" id="field_userBillingState"
+                [(ngModel)]="userBilling.userBillingState" required/>
+            <div [hidden]="!(editForm.controls.userBillingState?.dirty && editForm.controls.userBillingState?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userBillingState?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingCountry" for="field_userBillingCountry">User Billing Country</label>
+            <input type="text" class="form-control" name="userBillingCountry" id="field_userBillingCountry"
+                [(ngModel)]="userBilling.userBillingCountry" required/>
+            <div [hidden]="!(editForm.controls.userBillingCountry?.dirty && editForm.controls.userBillingCountry?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userBillingCountry?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.userBillingZipcode" for="field_userBillingZipcode">User Billing Zipcode</label>
+            <input type="text" class="form-control" name="userBillingZipcode" id="field_userBillingZipcode"
+                [(ngModel)]="userBilling.userBillingZipcode" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="articleApp.userBilling.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="userBilling.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === userBilling.user?.id ? userBilling.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span jhiTranslate="articleApp.userShipping.home.title">User Shippings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-user-shipping" [routerLink]="['/', { outlets: { popup: ['user-shipping-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="articleApp.userShipping.home.createLabel">
+            Create new User Shipping
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'articleApp.userShipping.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="userShippings">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingName"><span jhiTranslate="articleApp.userShipping.userShippingName">User Shipping Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingStreet1"><span jhiTranslate="articleApp.userShipping.userShippingStreet1">User Shipping Street 1</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingStreet2"><span jhiTranslate="articleApp.userShipping.userShippingStreet2">User Shipping Street 2</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingCity"><span jhiTranslate="articleApp.userShipping.userShippingCity">User Shipping City</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingState"><span jhiTranslate="articleApp.userShipping.userShippingState">User Shipping State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingCountry"><span jhiTranslate="articleApp.userShipping.userShippingCountry">User Shipping Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingZipcode"><span jhiTranslate="articleApp.userShipping.userShippingZipcode">User Shipping Zipcode</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userShippingDefault"><span jhiTranslate="articleApp.userShipping.userShippingDefault">User Shipping Default</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="articleApp.userShipping.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userShipping of userShippings ;trackBy: trackId">
+                <td><a [routerLink]="['../user-shipping', userShipping.id ]">{{userShipping.id}}</a></td>
+                <td>{{userShipping.userShippingName}}</td>
+                <td>{{userShipping.userShippingStreet1}}</td>
+                <td>{{userShipping.userShippingStreet2}}</td>
+                <td>{{userShipping.userShippingCity}}</td>
+                <td>{{userShipping.userShippingState}}</td>
+                <td>{{userShipping.userShippingCountry}}</td>
+                <td>{{userShipping.userShippingZipcode}}</td>
+                <td>{{userShipping.userShippingDefault}}</td>
+                <td>
+                    {{userShipping.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../user-shipping', userShipping.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-shipping/'+ userShipping.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-shipping/'+ userShipping.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="userShippings && userShippings.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

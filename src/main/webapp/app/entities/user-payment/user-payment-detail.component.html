@@ -1,0 +1,58 @@
+
+<div *ngIf="userPayment">
+    <h2><span jhiTranslate="articleApp.userPayment.detail.title">User Payment</span> {{userPayment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.userPayment.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'articleApp.TypePayment.' + userPayment.type}}">{{userPayment.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.cardName">Card Name</span></dt>
+        <dd>
+            <span>{{userPayment.cardName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.cardNumber">Card Number</span></dt>
+        <dd>
+            <span>{{userPayment.cardNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.expiryMonth">Expiry Month</span></dt>
+        <dd>
+            <span>{{userPayment.expiryMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.expiryYear">Expiry Year</span></dt>
+        <dd>
+            <span>{{userPayment.expiryYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.cvc">Cvc</span></dt>
+        <dd>
+            <span>{{userPayment.cvc}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.holderName">Holder Name</span></dt>
+        <dd>
+            <span>{{userPayment.holderName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.defaultPayment">Default Payment</span></dt>
+        <dd>
+            <span>{{userPayment.defaultPayment}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userPayment.user">User</span></dt>
+        <dd>
+            {{userPayment.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-payment/'+ userPayment.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

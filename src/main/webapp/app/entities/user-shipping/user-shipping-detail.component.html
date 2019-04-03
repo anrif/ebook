@@ -1,0 +1,58 @@
+
+<div *ngIf="userShipping">
+    <h2><span jhiTranslate="articleApp.userShipping.detail.title">User Shipping</span> {{userShipping.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingName">User Shipping Name</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingName}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingStreet1">User Shipping Street 1</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingStreet1}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingStreet2">User Shipping Street 2</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingStreet2}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingCity">User Shipping City</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingCity}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingState">User Shipping State</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingState}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingCountry">User Shipping Country</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingCountry}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingZipcode">User Shipping Zipcode</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingZipcode}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.userShippingDefault">User Shipping Default</span></dt>
+        <dd>
+            <span>{{userShipping.userShippingDefault}}</span>
+        </dd>
+        <dt><span jhiTranslate="articleApp.userShipping.user">User</span></dt>
+        <dd>
+            {{userShipping.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-shipping/'+ userShipping.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
